@@ -7,7 +7,13 @@ Built with AI Assistance because I never made a algorithm before, let alone some
 
 ```sh
 npm test                          # round-trips, historical vectors, attack regressions
-npx tsx src/attacks/bombe.ts      # break a random v0 key from a crib
+npx tsx src/attacks/bombe.ts                     # break a random v0 key from a crib
+npx tsx src/attacks/self-encryption.ts --target v1   # reflector fingerprint on v1
+npx tsx src/attacks/keyspace.ts                  # keyspace / attack cost, v0 vs v1
+
+npx tsx src/cli.ts encrypt --pass "phrase" --v 1 in.txt out.eb
+npx tsx src/cli.ts decrypt --pass "phrase" out.eb back.txt   # version read from the file
+npx tsx src/cli.ts bench --v 1
 ```
 
 See [docs/VERSIONS.md](docs/VERSIONS.md) for the version ladder and what each step fixes.

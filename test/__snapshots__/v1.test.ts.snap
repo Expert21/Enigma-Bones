@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`v1 byte Enigma > frozen known-answer vector (old ciphertext must stay decryptable) 1`] = `"07169135956be91f42d9f5e7be86c33eb58d7fefba9362c04d69f2a3aade13daa2af9f9d709dbe5e498bc83e785fd970"`;

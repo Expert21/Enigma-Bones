@@ -28,3 +28,33 @@ logical propagation over the crib "menu", with the diagonal board.
 - The "no self-encryption" rule alone rules out more than half of the possible
   crib positions (`possibleCribOffsets`).
 - Simplification: ring settings are taken as known (A-A-A).
+
+## v1 — Byte Enigma with key-generated wirings
+
+**Changes:** 256-symbol alphabet (any file, not just A–Z). Every table (5
+rotor wirings, notches, start positions, reflector and a 64-pair plugboard)
+is generated from a 256-bit secret. Ring settings are gone; with secret
+wirings they add nothing. Ciphertext now goes in a container with a version
+byte (`src/common/container.ts`), and `open()` picks the right version, so
+old files stay decryptable.
+
+**Fixed:** captured or known wirings and a small keyspace. The Bombe needs
+the scrambler tables S_i, and without the wirings it can't compute them.
+`src/attacks/keyspace.ts`: v0 is about 2^76.5 keys but the Bombe only searches
+about 2^24.7; v1 has an effective 2^256 (brute force at 10^12/s takes ~10^57 years).
+
+**Still broken: the reflector's fingerprint.** `src/attacks/self-encryption.ts`
+- *Distinguisher (known plaintext):* in 4.4 KB, a random cipher repeats a
+  plaintext byte about 17 times; v1 does it **0** times (chance ≈ 10^-8).
+  AES-256-CTR, as a control, gives 17. In 64 KB the evidence is overwhelming.
+- *Crib dragging:* with 256 symbols each crib byte rules out far less than with
+  26 letters (a 20-byte crib rules out ~7% of positions vs ~42% for a 14-letter
+  crib on v0). **A bigger alphabet dilutes the flaw but doesn't fix it.**
+
+**Speed:** 52 MB/s. Most of the cost is 12 dependent table lookups per byte
+(in through 5 rotors, reflector, back out, plus the plugboard).
+
+**Decryption:** still reciprocal (same function). Tested with randomized
+round-trips over 1–8 rotors, all 256 byte values, a frozen known-answer
+vector, CLI encrypt → decrypt through files, and the optimized fast path
+matched byte for byte against the readable `V1Machine`.
