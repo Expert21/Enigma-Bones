@@ -1,0 +1,25 @@
+{
+  "name": "enigma-bones",
+  "version": "1.0.0",
+  "description": "An Enigma machine evolved, one broken weakness at a time, into a modern-style cipher (educational, not for real data).",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "cli": "tsx src/cli.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  },
+  "private": true
+}

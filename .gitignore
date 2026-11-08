@@ -1,0 +1,5 @@
+node_modules
+dist
+analysis/.venv
+analysis/samples
+__pycache__
