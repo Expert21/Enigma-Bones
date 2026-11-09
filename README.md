@@ -10,10 +10,14 @@ npm test                          # round-trips, historical vectors, attack regr
 npx tsx src/attacks/bombe.ts                     # break a random v0 key from a crib
 npx tsx src/attacks/self-encryption.ts --target v1   # reflector fingerprint on v1
 npx tsx src/attacks/keyspace.ts                  # keyspace / attack cost, v0 vs v1
+npx tsx src/attacks/depth.ts                     # read v1 messages without the key
+npx tsx src/scoreboard.ts                        # measure every version → docs/SCOREBOARD.md
 
 npx tsx src/cli.ts encrypt --pass "phrase" --v 1 in.txt out.eb
 npx tsx src/cli.ts decrypt --pass "phrase" out.eb back.txt   # version read from the file
 npx tsx src/cli.ts bench --v 1
 ```
 
-See [docs/VERSIONS.md](docs/VERSIONS.md) for the version ladder and what each step fixes.
+See [docs/VERSIONS.md](docs/VERSIONS.md) for the version ladder, what each step fixes,
+and which parts are borrowed modern primitives; [docs/SCOREBOARD.md](docs/SCOREBOARD.md)
+for measurements of every version against AES-256-CTR.

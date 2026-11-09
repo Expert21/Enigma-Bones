@@ -1,10 +1,13 @@
 import { createHash } from "node:crypto";
 
 /**
+ * BORROWED PRIMITIVE (see "Borrowed vs rotor" in docs/VERSIONS.md).
+ *
  * Deterministic byte stream: SHA-256(seed || label || counter) blocks.
  * Used for key schedules (choosing rotor orders, building keyed wirings, ...).
  * It's a modern primitive on purpose: the key schedule isn't what we're
- * studying, the rotor machinery is.
+ * studying, the rotor machinery is. Results that depend on it (e.g. "one key
+ * bit changes every table") are SHA-256's credit, not the rotors'.
  */
 export class HashStream {
   private buf = new Uint8Array(0);

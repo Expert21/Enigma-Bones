@@ -50,7 +50,10 @@ function main() {
   console.log(`  possible table sets ${f(b.tables)}, but they come from a 256-bit secret → effective ${f(b.effective)}`);
   console.log(`  Bombe: not applicable (needs known wirings)`);
   console.log(`  brute force at 10^12 keys/s: ~${years(b.effective - 1).toExponential(1)} years on average`);
-  console.log("\nThe catch: v1 still has the reflector's fingerprint; see self-encryption.ts.");
+  console.log("\nKeyspace isn't security: v0's 2^76 keys fell to a 2^25 search. v1's table generation is");
+  console.log("SHA-256's work (borrowed), and v1 is still broken structurally:");
+  console.log("  - same settings every message → depth.ts reads new messages without the key");
+  console.log("  - the reflector's fingerprint  → self-encryption.ts");
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();

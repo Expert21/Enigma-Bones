@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-09T05:53:25.194Z",
+  "rows": [
+    {
+      "target": "v0 Enigma I/M3 (faithful)",
+      "decrypts": true,
+      "selfMatch": 0,
+      "flatness": 1.0015003993944671,
+      "biasZ": 117.23799161396356,
+      "repeat": 1.2016114879558062,
+      "repeatLag": 26,
+      "depth": 1,
+      "diffusion": 1,
+      "mbps": 4.568862531141251,
+      "practrand": "not run"
+    },
+    {
+      "target": "v1 Byte Enigma, keyed wirings",
+      "decrypts": true,
+      "selfMatch": 0,
+      "flatness": 1.0001581931410697,
+      "biasZ": 53.59696508275854,
+      "repeat": 1.113372461259131,
+      "repeatLag": 1631,
+      "depth": 0.9309002402511055,
+      "diffusion": 1,
+      "mbps": 37.42688570158933,
+      "practrand": "not run"
+    },
+    {
+      "target": "AES-256-CTR (reference)",
+      "decrypts": true,
+      "selfMatch": 1.140625,
+      "flatness": 1.0000020265888456,
+      "biasZ": -0.27372428605274257,
+      "repeat": 1.0932391345292687,
+      "repeatLag": 1985,
+      "depth": 0.028155265766796306,
+      "diffusion": 1,
+      "mbps": 4410.367008690426,
+      "practrand": "not run"
+    }
+  ]
+}
